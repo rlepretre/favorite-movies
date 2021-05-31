@@ -1,0 +1,22 @@
+<div *ngIf="movie">
+    <h2>{{movie.name | uppercase}} Details</h2>
+    <div><span>id: </span>{{movie.id}}</div>
+    <div>
+        <label>name:
+            <input [(ngModel)]="movie.name" placeholder="name" />
+        </label>
+    </div>
+    <div>
+        <label>url:
+            <input [(ngModel)]="movie.url" placeholder="url" />
+        </label>
+    </div>
+    <div>
+        <iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(movie.url)' width="560" height="315" frameborder="0"
+            webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+</div>
+
+
+<button (click)="goBack()">go back</button>
+<button (click)="save()">save</button>
